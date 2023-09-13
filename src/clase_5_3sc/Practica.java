@@ -123,7 +123,11 @@ public class Practica {
                     eliminar(dato);
                 }
             }else if(2==dato){
-                playlist.clear();
+                if(JOptionPane.showConfirmDialog(null,"¿Estás seguro de eliminar tu PlayList?",null,0,JOptionPane.YES_NO_OPTION)==0){
+                        playlist.clear();
+                    }else{
+                        eliminar(dato);
+                    }
             }else{
                 msj("Solo hay dos opcciones wey");
                 eliminar(dato);
@@ -149,14 +153,23 @@ public class Practica {
     
     public static void agregar(){
         String acumula="";
-        do{
+        /*do{
             acumula="";
             playlist.add(cap_cad("Ingrese la canción que desea agregar"));
             
             for (int i = 0; i < playlist.size(); i++) {
                 acumula+=(i+1)+" "+playlist.get(i)+"\n";
             }
-        }while (JOptionPane.showConfirmDialog(null,"Esta es tu PlayList\n"+acumula+"\n¿Desea agregar otra canción?",null,0,JOptionPane.YES_NO_OPTION)==0);
+        }while (JOptionPane.showConfirmDialog(null,"Esta es tu PlayList\n"+acumula+"\n¿Desea agregar otra canción?",null,0,JOptionPane.YES_NO_OPTION)==0);*/
+        acumula="";
+            playlist.add(cap_cad("Ingrese la canción que desea agregar"));
+            
+            for (int i = 0; i < playlist.size(); i++) {
+                acumula+=(i+1)+" "+playlist.get(i)+"\n";
+            }
+        if(JOptionPane.showConfirmDialog(null,"Esta es tu PlayList\n"+acumula+"\n¿Desea agregar otra canción?",null,0,JOptionPane.YES_NO_OPTION)==0){
+            agregar();
+        }
     }
     
     
